@@ -1,6 +1,6 @@
 PY = .venv/bin/python
 
-.PHONY: setup design data check test
+.PHONY: setup design data check test notebook
 
 setup:
 	uv pip install --python $(PY) -r requirements.txt
@@ -17,3 +17,6 @@ check:
 
 test:
 	$(PY) -m pytest -q
+
+notebook:
+	.venv/bin/jupyter nbconvert --to notebook --execute --inplace notebooks/analysis.ipynb
