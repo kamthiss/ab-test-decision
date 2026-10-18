@@ -1,6 +1,6 @@
 PY = .venv/bin/python
 
-.PHONY: setup design data check test notebook
+.PHONY: setup design data check test notebook simulations
 
 setup:
 	uv pip install --python $(PY) -r requirements.txt
@@ -20,3 +20,6 @@ test:
 
 notebook:
 	.venv/bin/jupyter nbconvert --to notebook --execute --inplace notebooks/analysis.ipynb
+
+simulations:
+	.venv/bin/jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=600 notebooks/simulations.ipynb
