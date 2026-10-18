@@ -1,8 +1,11 @@
 PY = .venv/bin/python
 
-.PHONY: setup design data check test notebook simulations
+.PHONY: all setup design data check test notebook simulations
+
+all: setup data check test notebook simulations
 
 setup:
+	test -d .venv || uv venv --python 3.12 .venv
 	uv pip install --python $(PY) -r requirements.txt
 	uv pip install --python $(PY) -e .
 
